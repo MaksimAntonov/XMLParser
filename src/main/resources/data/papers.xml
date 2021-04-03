@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Papers xmlns:tns="https://github.com/MaksimAntonov/XMLParser"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://github.com/MaksimAntonov/XMLParser papers.xsd">
+    <Paper id="1" type="tns:Newspaper">
+        <Title>New York Time</Title>
+        <SubscribeDate>01/03/2021</SubscribeDate>
+        <Monthly>Yes</Monthly>
+        <Chars>
+            <Colored>No</Colored>
+            <Pages>10</Pages>
+            <SubscribeIndex>1-456-725</SubscribeIndex>
+        </Chars>
+    </Paper>
+    <Paper id="2" type="tns:Magazine">
+        <Title>Cars and Trucks</Title>
+        <SubscribeDate>02/03/2021</SubscribeDate>
+        <Monthly>Yes</Monthly>
+        <Chars>
+            <Colored>Yes</Colored>
+            <GlossyCover>Yes</GlossyCover>
+            <Pages>15</Pages>
+            <SubscribeIndex>1-456-779</SubscribeIndex>
+        </Chars>
+    </Paper>
+    <Paper id="3" type="tns:Booklet">
+        <Title>Safe Life</Title>
+        <SubscribeDate>02/03/2021</SubscribeDate>
+        <Monthly>Yes</Monthly>
+        <Chars>
+            <Colored>Yes</Colored>
+            <GlossyCover>Yes</GlossyCover>
+            <Pages>5</Pages>
+        </Chars>
+    </Paper>
+</Papers>
