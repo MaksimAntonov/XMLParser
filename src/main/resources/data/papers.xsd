@@ -4,49 +4,85 @@
            xmlns:tns="https://github.com/MaksimAntonov/XMLParser"
            targetNamespace="https://github.com/MaksimAntonov/XMLParser"
 >
-  <element name="Papers" type="tns:PapersType"/>
+  <element name="papers">
+    <complexType>
+      <sequence>
+        <element ref="tns:Publication" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
 
-  <complexType name="CharsType" type="tns:CharsType">
+  <complexType name="Publication">
     <sequence>
-      <element name="Pages" type="positiveInteger"/>
-      <element name="SubscribeIndex" minOccurs="0">
-        <simpleType>
-          <restriction base="ID">
-            <pattern value="\d-\d{3}-\d{3}" />
-          </restriction>
-        </simpleType>
-      </element>
-      <element name="Colored" minOccurs="0">
-        <simpleType>
-          <restriction base="string">
-            <enumeration value="Yes"/>
-            <enumeration value="No"/>
-          </restriction>
-        </simpleType>
-      </element>
-      <element name="GlossyCover" minOccurs="0">
-        <simpleType>
-          <restriction base="string">
-            <enumeration value="Yes"/>
-            <enumeration value="No"/>
-          </restriction>
-        </simpleType>
-      </element>
+      <element name="title" type="string"/>
+      <element name="subscribe-date" type="date"/>
+      <element name="monthly" type="string"/>
+      <element name="colored" type="tns:Colored" minOccurs="1" maxOccurs="1"/>
+      <element name="pages" type="positiveInteger"/>
     </sequence>
+    <attribute name="paper-id" type="tns:PaperId" use="required"/>
+    <attribute name="publication-website" type="string" use="optional" default="http://www.example.com"/>
   </complexType>
-  <complexType name="PaperType">
-    <sequence>
-      <element name="Title" type="string"/>
-      <element name="SubscribeDate" type="date"/>
-      <element type="string" name="Monthly"/>
-      <element ref="CharsType"/>
-    </sequence>
-    <attribute type="ID" name="id" use="required"/>
-    <attribute type="string" name="type" use="required"/>
+
+  <complexType name="Newspaper">
+    <complexContent>
+      <extension base="tns:Publication">
+        <sequence>
+          <element name="subscribe-index" type="tns:SubscribeDate" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
   </complexType>
-  <complexType name="PapersType">
-    <sequence>
-      <element type="tns:PaperType" name="Paper" maxOccurs="unbounded" minOccurs="1"/>
-    </sequence>
+
+  <complexType name="Magazine">
+    <complexContent>
+      <extension base="tns:Publication">
+        <sequence>
+          <element name="pages-type" type="tns:PagesType" minOccurs="1" maxOccurs="1"/>
+          <element name="subscribe-index" type="tns:SubscribeDate" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
   </complexType>
+
+  <complexType name="Booklet">
+    <complexContent>
+      <extension base="tns:Publication">
+        <sequence>
+          <element name="pages-type" type="tns:PagesType" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <simpleType name="PaperId">
+    <restriction base="ID">
+      <pattern value="p-\d{2,3}"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="SubscribeDate">
+    <restriction base="string">
+      <pattern value="[1-9]-\d{3,4}-\d{3}" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="Colored">
+    <restriction base="string">
+      <enumeration value="Yes"/>
+      <enumeration value="No"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="PagesType">
+    <restriction base="string">
+      <enumeration value="Glossy"/>
+      <enumeration value="Paper"/>
+    </restriction>
+  </simpleType>
+
+  <element name="Publication" type="tns:Publication" abstract="true"/>
+  <element name="newspaper" type="tns:Newspaper" substitutionGroup="tns:Publication"/>
+  <element name="magazine" type="tns:Magazine" substitutionGroup="tns:Publication"/>
+  <element name="booklet" type="tns:Booklet" substitutionGroup="tns:Publication"/>
 </schema>

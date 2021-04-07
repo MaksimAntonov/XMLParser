@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Papers xmlns:tns="https://github.com/MaksimAntonov/XMLParser"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="https://github.com/MaksimAntonov/XMLParser papers.xsd">
-    <Paper id="1" type="tns:Newspaper">
-        <Title>New York Time</Title>
-        <SubscribeDate>01/03/2021</SubscribeDate>
-        <Monthly>Yes</Monthly>
-        <Chars>
-            <Colored>No</Colored>
-            <Pages>10</Pages>
-            <SubscribeIndex>1-456-725</SubscribeIndex>
-        </Chars>
-    </Paper>
-    <Paper id="2" type="tns:Magazine">
-        <Title>Cars and Trucks</Title>
-        <SubscribeDate>02/03/2021</SubscribeDate>
-        <Monthly>Yes</Monthly>
-        <Chars>
-            <Colored>Yes</Colored>
-            <GlossyCover>Yes</GlossyCover>
-            <Pages>15</Pages>
-            <SubscribeIndex>1-456-779</SubscribeIndex>
-        </Chars>
-    </Paper>
-    <Paper id="3" type="tns:Booklet">
-        <Title>Safe Life</Title>
-        <SubscribeDate>02/03/2021</SubscribeDate>
-        <Monthly>Yes</Monthly>
-        <Chars>
-            <Colored>Yes</Colored>
-            <GlossyCover>Yes</GlossyCover>
-            <Pages>5</Pages>
-        </Chars>
-    </Paper>
-</Papers>
+<papers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://github.com/MaksimAntonov/XMLParser"
+        xsi:schemaLocation="https://github.com/MaksimAntonov/XMLParser ./papers.xsd">
+    <newspaper paper-id="p-001">
+        <title>New York Time</title>
+        <subscribe-date>2021-03-01</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <subscribe-index>1-4516-705</subscribe-index>
+    </newspaper>
+    <magazine paper-id="p-12" publication-website="http://www.carsandtruck.pub/">
+        <title>Cars and Trucks</title>
+        <subscribe-date>2021-03-02</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>15</pages>
+        <pages-type>Paper</pages-type>
+        <subscribe-index>1-151-779</subscribe-index>
+    </magazine>
+    <booklet publication-website="http://www.safelife.org/" paper-id="p-03">
+        <title>Safe Life</title>
+        <subscribe-date>2021-03-02</subscribe-date>
+        <monthly>no</monthly>
+        <colored>Yes</colored>
+        <pages>5</pages>
+        <pages-type>Glossy</pages-type>
+    </booklet>
+</papers>
