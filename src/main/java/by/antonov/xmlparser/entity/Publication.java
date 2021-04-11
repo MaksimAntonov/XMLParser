@@ -1,7 +1,6 @@
 package by.antonov.xmlparser.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public abstract class Publication {
     private static String DEFAULT_WEBSITE = "http://www.example.com";
@@ -66,30 +65,39 @@ public abstract class Publication {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Publication)) return false;
+
         Publication that = (Publication) o;
         return getPages() == that.getPages()
-                && (id != null && getId().equals(that.getId()))
-                && (title != null && getTitle().equals(that.getTitle()))
-                && (subscribeDate != null && getSubscribeDate().equals(that.getSubscribeDate()))
-                && (monthly != null && getMonthly().equals(that.getMonthly()))
-                && (colored != null && getColored().equals(that.getColored()));
+                && (getTitle() != null && getTitle().equals(that.getTitle()))
+                && (getSubscribeDate() != null && getSubscribeDate().equals(that.getSubscribeDate()))
+                && (getMonthly() != null && getMonthly().equals(that.getMonthly()))
+                && (getId() != null && getId().equals(that.getId()))
+                && (getColored() != null && getColored().equals(that.getColored()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getSubscribeDate(), getMonthly(), getColored(), getPages());
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getWebsite() != null ? getWebsite().hashCode() : 0);
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getSubscribeDate() != null ? getSubscribeDate().hashCode() : 0);
+        result = 31 * result + (getMonthly() != null ? getMonthly().hashCode() : 0);
+        result = 31 * result + (getColored() != null ? getColored().hashCode() : 0);
+        result = 31 * result + getPages();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Publication{" +
-                "id='" + id + '\'' +
-                (website != null ? ", website='" + website + "'" : "") +
-                ", title='" + title + "'" +
-                ", subscribeDate=" + subscribeDate +
-                ", monthly='" + monthly + '\'' +
-                ", colored='" + colored + '\'' +
-                ", pages=" + pages +
-                '}';
+        final StringBuilder sb = new StringBuilder("Publication{");
+        sb.append("id='").append(id).append("'");
+        sb.append(", website='").append(website).append("'");
+        sb.append(", title='").append(title).append("'");
+        sb.append(", subscribeDate=").append(subscribeDate);
+        sb.append(", monthly='").append(monthly).append("'");
+        sb.append(", colored='").append(colored).append("'");
+        sb.append(", pages=").append(pages);
+        sb.append('}');
+        return sb.toString();
     }
 }

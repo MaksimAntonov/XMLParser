@@ -38,6 +38,9 @@ public class Booklet extends Publication{
 
     @Override
     public String toString() {
-        return "Booklet{"  + super.toString() + "pageType='" + pageType + "'} ";
+        final StringBuilder sb = new StringBuilder("Booklet{");
+        sb.append("pageType='").append(pageType).append("'");
+        sb.append('}');
+        return sb.toString();
     }
 }

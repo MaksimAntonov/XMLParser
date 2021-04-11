@@ -1,7 +1,6 @@
 package by.antonov.xmlparser.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Newspaper extends Publication {
     private String subscribeIndex;
@@ -39,6 +38,9 @@ public class Newspaper extends Publication {
 
     @Override
     public String toString() {
-        return "Newspaper{" + super.toString() + "subscribeIndex='" + subscribeIndex + "'}";
+        final StringBuilder sb = new StringBuilder("Newspaper{");
+        sb.append("subscribeIndex='").append(subscribeIndex).append("'");
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -15,7 +15,7 @@ public class PaperErrorHandler implements ErrorHandler {
     }
 
     @Override
-    public void error(SAXParseException exception) throws SAXException {
+    public void error(SAXParseException exception) {
         Logger.error(getLineColumnNumber(exception) + " - " + exception.getMessage());
     }
 
