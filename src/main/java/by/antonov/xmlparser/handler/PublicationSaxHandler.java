@@ -1,8 +1,7 @@
 package by.antonov.xmlparser.handler;
 
 import by.antonov.xmlparser.entity.Publication;
-import by.antonov.xmlparser.exception.PublicationException;
-import by.antonov.xmlparser.parser.entitybuilder.PublicationBuilder;
+import by.antonov.xmlparser.parser.entitybuilder.PublicationWriter;
 import by.antonov.xmlparser.parser.entitybuilder.PublicationFactory;
 import by.antonov.xmlparser.validator.PublicationEnumValidator;
 import by.antonov.xmlparser.entity.PublicationTypes;
@@ -16,7 +15,7 @@ import java.util.Set;
 public class PublicationSaxHandler extends DefaultHandler {
     protected Set<Publication> publicationSet;
     private PublicationFactory publicationFactory;
-    private PublicationBuilder publicationBuilder;
+    private PublicationWriter publicationWriter;
     private String currentRootElement;
     private String currentElementContent;
 
@@ -37,36 +36,36 @@ public class PublicationSaxHandler extends DefaultHandler {
             switch (currentType) {
                 case BOOKLET -> {
                     currentRootElement = qName;
-                    publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
+                    publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
                 }
                 case MAGAZINE -> {
                     currentRootElement = qName;
-                    publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
+                    publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
                 }
                 case NEWSPAPER -> {
                     currentRootElement = qName;
-                    publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
+                    publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
                 }
             }
         }
 
-        if (publicationBuilder != null) {
+        if (publicationWriter != null) {
             for (int i = 0; i < attributes.getLength(); i++) {
-                publicationBuilder.setAttribute(attributes.getQName(i), attributes.getValue(i));
+                publicationWriter.setAttribute(attributes.getQName(i), attributes.getValue(i));
             }
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (publicationBuilder != null) {
-            publicationBuilder.setElement(qName, currentElementContent);
+        if (publicationWriter != null) {
+            publicationWriter.setElement(qName, currentElementContent);
         }
 
         if (currentRootElement != null && currentRootElement.equals(qName)) {
-            publicationSet.add(publicationBuilder.buildPublication());
+            publicationSet.add(publicationWriter.buildPublication());
 
-            publicationBuilder = null;
+            publicationWriter = null;
             currentRootElement = null;
         }
     }

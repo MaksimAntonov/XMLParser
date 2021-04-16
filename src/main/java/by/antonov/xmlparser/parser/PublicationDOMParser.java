@@ -2,10 +2,9 @@ package by.antonov.xmlparser.parser;
 
 import by.antonov.xmlparser.entity.*;
 import by.antonov.xmlparser.exception.PublicationException;
-import by.antonov.xmlparser.parser.entitybuilder.PublicationBuilder;
+import by.antonov.xmlparser.parser.entitybuilder.PublicationWriter;
 import by.antonov.xmlparser.parser.entitybuilder.PublicationFactory;
 import by.antonov.xmlparser.util.CustomResourceLoader;
-import by.antonov.xmlparser.util.PublicationEnumConverter;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -18,7 +17,7 @@ import java.util.Set;
 public class PublicationDOMParser extends PublicationParser {
     private DocumentBuilder documentBuilder;
     private PublicationFactory publicationFactory;
-    private PublicationBuilder publicationBuilder;
+    private PublicationWriter publicationWriter;
 
     public PublicationDOMParser() throws PublicationException {
         super();
@@ -53,17 +52,17 @@ public class PublicationDOMParser extends PublicationParser {
                 Node elementNode = publicationList.item(i);
                 switch (PublicationTypes.valueOf(elementNode.getNodeName().toUpperCase())) {
                     case NEWSPAPER -> {
-                        publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
+                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
                     }
                     case MAGAZINE -> {
-                        publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
+                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
                     }
                     case BOOKLET -> {
-                        publicationBuilder = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
+                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
                     }
                 }
                 parsePublicationElement((Element) elementNode);
-                publicationSet.add(publicationBuilder.buildPublication());
+                publicationSet.add(publicationWriter.buildPublication());
             }
         } catch (SAXException | IOException  e) {
             throw new PublicationException("Parser error", e);
@@ -77,7 +76,7 @@ public class PublicationDOMParser extends PublicationParser {
         NamedNodeMap attributeMap = publicationElement.getAttributes();
         for (int i = 0; i < attributeMap.getLength(); i++) {
             Node attribute = attributeMap.item(i);
-            publicationBuilder.setAttribute(attribute.getNodeName(), attribute.getTextContent());
+            publicationWriter.setAttribute(attribute.getNodeName(), attribute.getTextContent());
         }
 
         // element fields
@@ -88,7 +87,7 @@ public class PublicationDOMParser extends PublicationParser {
             }
 
             Node currentElement = childElements.item(i);
-            publicationBuilder.setElement(currentElement.getNodeName(), currentElement.getTextContent());
+            publicationWriter.setElement(currentElement.getNodeName(), currentElement.getTextContent());
         }
     }
 }

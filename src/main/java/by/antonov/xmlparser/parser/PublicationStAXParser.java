@@ -2,7 +2,7 @@ package by.antonov.xmlparser.parser;
 
 import by.antonov.xmlparser.entity.PublicationTypes;
 import by.antonov.xmlparser.exception.PublicationException;
-import by.antonov.xmlparser.parser.entitybuilder.PublicationBuilder;
+import by.antonov.xmlparser.parser.entitybuilder.PublicationWriter;
 import by.antonov.xmlparser.parser.entitybuilder.PublicationFactory;
 import by.antonov.xmlparser.util.CustomResourceLoader;
 import by.antonov.xmlparser.validator.PublicationEnumValidator;
@@ -13,12 +13,11 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-// TODO implement this
 public class PublicationStAXParser extends PublicationParser {
     private final XMLInputFactory inputFactory;
     private final PublicationFactory builderFactory;
     private XMLStreamReader reader;
-    private PublicationBuilder publicationBuilder;
+    private PublicationWriter publicationWriter;
     private String currentRootElement;
 
     public PublicationStAXParser() {
@@ -53,31 +52,31 @@ public class PublicationStAXParser extends PublicationParser {
                         switch (currentType) {
                             case BOOKLET -> {
                                 currentRootElement = elementName;
-                                publicationBuilder = builderFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
+                                publicationWriter = builderFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
                             }
                             case MAGAZINE -> {
                                 currentRootElement = elementName;
-                                publicationBuilder = builderFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
+                                publicationWriter = builderFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
                             }
                             case NEWSPAPER -> {
                                 currentRootElement = elementName;
-                                publicationBuilder = builderFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
+                                publicationWriter = builderFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
                             }
                         }
 
                         for (int i = 0; i < reader.getAttributeCount(); i++) {
-                            publicationBuilder.setAttribute(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
+                            publicationWriter.setAttribute(reader.getAttributeLocalName(i), reader.getAttributeValue(i));
                         }
                     }
 
                     if (PublicationEnumValidator.publicationElementContainValue(elementName)) {
-                        publicationBuilder.setElement(elementName, getXMLText(reader));
+                        publicationWriter.setElement(elementName, getXMLText(reader));
                     }
                 }
 
                 if (reader.isEndElement()) {
                     if (currentRootElement != null && currentRootElement.equals(reader.getLocalName())) {
-                        publicationSet.add(publicationBuilder.buildPublication());
+                        publicationSet.add(publicationWriter.buildPublication());
                     }
                 }
             }

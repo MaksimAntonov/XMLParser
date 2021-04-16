@@ -9,7 +9,7 @@ import by.antonov.xmlparser.validator.PublicationEnumValidator;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class PublicationBuilder {
+public abstract class PublicationWriter {
     protected Map<PublicationElements, String> elementsMap = new HashMap<>();
     protected Map<PublicationAttributes, String> attributeMap = new HashMap<>();
 
