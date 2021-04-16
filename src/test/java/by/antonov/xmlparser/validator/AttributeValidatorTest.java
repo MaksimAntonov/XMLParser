@@ -4,8 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import by.antonov.xmlparser.validator.AttributeValidator;
-
 public class AttributeValidatorTest {
     @DataProvider(name = "isIDTestData")
     public Object[][] isIDTestData() {
