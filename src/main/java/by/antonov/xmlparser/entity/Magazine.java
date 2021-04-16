@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Magazine extends Newspaper{
     private String pageType;
 
+    public Magazine() {
+        super();
+    }
+
     public Magazine(String id, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String subscribeIndex, String pageType) {
         super(id, title, subscribeDate, monthly, colored, pages, subscribeIndex);
         this.pageType = pageType;
@@ -17,6 +21,10 @@ public class Magazine extends Newspaper{
 
     public String getPageType() {
         return pageType;
+    }
+
+    public void setPageType(String pageType) {
+        this.pageType = pageType;
     }
 
     @Override
@@ -32,14 +40,15 @@ public class Magazine extends Newspaper{
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + getPageType().hashCode();
+        result = 31 * result + ((getPageType() != null) ? getPageType().hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Magazine{");
-        sb.append("pageType='").append(pageType).append("'");
+        final StringBuilder sb = new StringBuilder("\r\nMagazine{");
+        sb.append(super.toString());
+        sb.append(" pageType='").append(pageType).append("'");
         sb.append('}');
         return sb.toString();
     }

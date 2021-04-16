@@ -1,5 +1,6 @@
 package by.antonov.xmlparser.validator;
 
+import by.antonov.xmlparser.util.CustomResourceLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,9 +21,9 @@ public class XmlValidator {
         Logger.info("XmlFileValidation for XML: " + xmlFilename + ", schema: " + schemaFilename);
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         try {
-            Schema schema = schemaFactory.newSchema(new File(schemaFilename));
+            Schema schema = schemaFactory.newSchema(CustomResourceLoader.getResourceFile(schemaFilename));
             Validator validator = schema.newValidator();
-            Source source = new StreamSource(xmlFilename);
+            Source source = new StreamSource(CustomResourceLoader.getResourceFile(xmlFilename));
             validator.setErrorHandler(new PaperErrorHandler());
             validator.validate(source);
             Logger.info("XmlFileValidation was finished.");

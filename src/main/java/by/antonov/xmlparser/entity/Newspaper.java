@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Newspaper extends Publication {
     private String subscribeIndex;
 
+    public Newspaper() {
+        super();
+    }
+
     public Newspaper(String id, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String subscribeIndex) {
         super(id, title, subscribeDate, monthly, colored, pages);
         this.subscribeIndex = subscribeIndex;
@@ -17,6 +21,10 @@ public class Newspaper extends Publication {
 
     public String getSubscribeIndex() {
         return subscribeIndex;
+    }
+
+    public void setSubscribeIndex(String subscribeIndex) {
+        this.subscribeIndex = subscribeIndex;
     }
 
     @Override
@@ -38,9 +46,10 @@ public class Newspaper extends Publication {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Newspaper{");
-        sb.append("subscribeIndex='").append(subscribeIndex).append("'");
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder("\r\nNewspaper{");
+        sb.append(super.toString())
+        .append(" subscribeIndex='").append(subscribeIndex).append("'")
+        .append('}');
         return sb.toString();
     }
 }

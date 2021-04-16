@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Booklet extends Publication{
     private String pageType;
 
+    public Booklet() {
+        super();
+    }
+
     public Booklet(String id, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String pageType) {
         super(id, title, subscribeDate, monthly, colored, pages);
         this.pageType = pageType;
@@ -17,6 +21,10 @@ public class Booklet extends Publication{
 
     public String getPageType() {
         return pageType;
+    }
+
+    public void setPageType(String pageType) {
+        this.pageType = pageType;
     }
 
     @Override
@@ -38,8 +46,9 @@ public class Booklet extends Publication{
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Booklet{");
-        sb.append("pageType='").append(pageType).append("'");
+        final StringBuilder sb = new StringBuilder("\r\nBooklet{");
+        sb.append(super.toString());
+        sb.append(" pageType='").append(pageType).append("'");
         sb.append('}');
         return sb.toString();
     }

@@ -3,7 +3,7 @@ package by.antonov.xmlparser.entity;
 import java.time.LocalDate;
 
 public abstract class Publication {
-    private static String DEFAULT_WEBSITE = "http://www.example.com";
+    private static final String DEFAULT_WEBSITE = "http://www.example.com";
 
     private String id;
     private String website;
@@ -12,6 +12,8 @@ public abstract class Publication {
     private String monthly;
     private String colored;
     private int pages;
+
+    public Publication() {}
 
     public Publication(String id, String title, LocalDate subscribeDate, String monthly, String colored, int pages) {
         this.id = id;
@@ -59,6 +61,34 @@ public abstract class Publication {
 
     public int getPages() {
         return pages;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSubscribeDate(LocalDate subscribeDate) {
+        this.subscribeDate = subscribeDate;
+    }
+
+    public void setMonthly(String monthly) {
+        this.monthly = monthly;
+    }
+
+    public void setColored(String colored) {
+        this.colored = colored;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 
     @Override
