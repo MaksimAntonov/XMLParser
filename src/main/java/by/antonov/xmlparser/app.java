@@ -1,7 +1,7 @@
 package by.antonov.xmlparser;
 
 import by.antonov.xmlparser.parser.PublicationParser;
-import by.antonov.xmlparser.parser.PublicationBuilderFactory;
+import by.antonov.xmlparser.parser.PublicationParserFactory;
 import by.antonov.xmlparser.exception.PublicationException;
 import by.antonov.xmlparser.validator.XmlValidator;
 
@@ -11,7 +11,7 @@ public class app {
 
         PublicationParser builder = null;
         try {
-            builder = PublicationBuilderFactory.createPublicationBuilder("stax");
+            builder = PublicationParserFactory.createPublicationParser("stax");
             builder.buildPublicationSet("data/papers.xml");
 
             System.out.println(builder.getPublicationList().toString());

@@ -3,19 +3,15 @@ package by.antonov.xmlparser.entity;
 import java.time.LocalDate;
 
 public class Booklet extends Publication{
-    private String pageType;
+    private final String pageType;
 
-    public Booklet(String id, String website, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String pageType) {
+    protected Booklet(String id, String website, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String pageType) {
         super(id, website, title, subscribeDate, monthly, colored, pages);
         this.pageType = pageType;
     }
 
     public String getPageType() {
         return pageType;
-    }
-
-    public void setPageType(String pageType) {
-        this.pageType = pageType;
     }
 
     @Override

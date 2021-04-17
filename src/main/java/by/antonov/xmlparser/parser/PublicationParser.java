@@ -10,7 +10,7 @@ public abstract class PublicationParser {
     protected Set<Publication> publicationSet;
 
     protected PublicationParser() {
-        this.publicationSet = new HashSet<Publication>();
+        this.publicationSet = new HashSet<>();
     }
 
     protected PublicationParser(Set<Publication> publicationList) {
@@ -18,7 +18,7 @@ public abstract class PublicationParser {
     }
 
     public Set<Publication> getPublicationList() {
-        return new HashSet<Publication>(this.publicationSet);
+        return new HashSet<>(this.publicationSet);
     }
 
     public abstract void buildPublicationSet(String xmlFilepath) throws PublicationException;

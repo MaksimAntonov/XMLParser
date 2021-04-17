@@ -6,7 +6,6 @@ import by.antonov.xmlparser.parser.entitybuilder.PublicationFactory;
 import by.antonov.xmlparser.validator.PublicationEnumValidator;
 import by.antonov.xmlparser.entity.PublicationTypes;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.HashSet;
@@ -24,13 +23,13 @@ public class PublicationSaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void startDocument() throws SAXException {
-        this.publicationSet = new HashSet<Publication>();
+    public void startDocument() {
+        this.publicationSet = new HashSet<>();
         this.publicationFactory = new PublicationFactory();
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         if (PublicationEnumValidator.publicationTypeContainValue(qName)) {
             PublicationTypes currentType = PublicationTypes.valueOf(qName.toUpperCase());
             switch (currentType) {
@@ -57,7 +56,7 @@ public class PublicationSaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         if (publicationWriter != null) {
             publicationWriter.setElement(qName, currentElementContent);
         }
@@ -71,7 +70,7 @@ public class PublicationSaxHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         currentElementContent = new String(ch, start, length);
     }
 }

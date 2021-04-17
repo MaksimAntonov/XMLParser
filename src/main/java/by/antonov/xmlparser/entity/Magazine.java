@@ -3,19 +3,15 @@ package by.antonov.xmlparser.entity;
 import java.time.LocalDate;
 
 public class Magazine extends Newspaper{
-    private String pageType;
+    private final String pageType;
 
-    private Magazine(String id, String website, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String subscribeIndex, String pageType) {
+    protected Magazine(String id, String website, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String subscribeIndex, String pageType) {
         super(id, website, title, subscribeDate, monthly, colored, pages, subscribeIndex);
         this.pageType = pageType;
     }
 
     public String getPageType() {
         return pageType;
-    }
-
-    public void setPageType(String pageType) {
-        this.pageType = pageType;
     }
 
     @Override

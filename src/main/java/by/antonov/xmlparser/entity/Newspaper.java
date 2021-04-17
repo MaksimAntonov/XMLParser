@@ -3,7 +3,7 @@ package by.antonov.xmlparser.entity;
 import java.time.LocalDate;
 
 public class Newspaper extends Publication {
-    private String subscribeIndex;
+    private final String subscribeIndex;
 
     protected Newspaper(String id, String website, String title, LocalDate subscribeDate, String monthly, String colored, int pages, String subscribeIndex) {
         super(id, website, title, subscribeDate, monthly, colored, pages);

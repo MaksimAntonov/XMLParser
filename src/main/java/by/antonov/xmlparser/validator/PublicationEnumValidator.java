@@ -10,9 +10,10 @@ public class PublicationEnumValidator {
     public static boolean publicationTypeContainValue(String testValue) {
         boolean result = false;
         for (PublicationTypes value : PublicationTypes.values()) {
-            if (value.name().equalsIgnoreCase(testValue)) {
-                result = true;
+            if (!value.name().equalsIgnoreCase(testValue)) {
+                continue;
             }
+            result = true;
         }
 
         return result;
@@ -21,9 +22,10 @@ public class PublicationEnumValidator {
     public static boolean publicationElementContainValue(String testValue) {
         boolean result = false;
         for (PublicationElements value : PublicationElements.values()) {
-            if (value.name().equalsIgnoreCase(testValue.replace("-", "_"))) {
-                result = true;
+            if (!value.name().equalsIgnoreCase(testValue.replace("-", "_"))) {
+                continue;
             }
+            result = true;
         }
         return result;
     }
@@ -31,9 +33,10 @@ public class PublicationEnumValidator {
     public static boolean publicationAttributeContainValue(String testValue) {
         boolean result = false;
         for (PublicationAttributes value : PublicationAttributes.values()) {
-            if (value.name().equalsIgnoreCase(testValue.replace("-", "_"))) {
-                result = true;
+            if (!value.name().equalsIgnoreCase(testValue.replace("-", "_"))) {
+                continue;
             }
+            result = true;
         }
         return result;
     }

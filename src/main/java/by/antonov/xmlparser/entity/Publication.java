@@ -5,13 +5,13 @@ import java.time.LocalDate;
 public abstract class Publication {
     protected static final String DEFAULT_WEBSITE = "http://www.example.com";
 
-    private String id;
-    private String website;
-    private String title;
-    private LocalDate subscribeDate;
-    private String monthly;
-    private String colored;
-    private int pages;
+    private final String id;
+    private final String website;
+    private final String title;
+    private final LocalDate subscribeDate;
+    private final String monthly;
+    private final String colored;
+    private final int pages;
 
     public Publication(String id, String title, LocalDate subscribeDate, String monthly, String colored, int pages) {
         this(id, DEFAULT_WEBSITE, title, subscribeDate, monthly, colored, pages);
@@ -53,34 +53,6 @@ public abstract class Publication {
 
     public int getPages() {
         return pages;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSubscribeDate(LocalDate subscribeDate) {
-        this.subscribeDate = subscribeDate;
-    }
-
-    public void setMonthly(String monthly) {
-        this.monthly = monthly;
-    }
-
-    public void setColored(String colored) {
-        this.colored = colored;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
     }
 
     @Override

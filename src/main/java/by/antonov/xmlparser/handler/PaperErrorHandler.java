@@ -3,14 +3,13 @@ package by.antonov.xmlparser.handler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 public class PaperErrorHandler implements ErrorHandler {
-    private static Logger Logger = LogManager.getLogger();
+    private static final Logger Logger = LogManager.getLogger();
 
     @Override
-    public void warning(SAXParseException exception) throws SAXException {
+    public void warning(SAXParseException exception) {
         Logger.warn(getLineColumnNumber(exception) + " - " + exception.getMessage());
     }
 
@@ -20,7 +19,7 @@ public class PaperErrorHandler implements ErrorHandler {
     }
 
     @Override
-    public void fatalError(SAXParseException exception) throws SAXException {
+    public void fatalError(SAXParseException exception) {
         Logger.fatal(getLineColumnNumber(exception) + " - " + exception.getMessage());
     }
 

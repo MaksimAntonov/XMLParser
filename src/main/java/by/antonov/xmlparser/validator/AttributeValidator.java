@@ -1,8 +1,8 @@
 package by.antonov.xmlparser.validator;
 
 public class AttributeValidator {
-    private static String ID_REGEXP = "p-[0-9]{2,3}";
-    private static String WEBSITE_REGEXP = "http(s)?://(www.)?([A-z0-9_-].?)+.([a-z]){2,4}/";
+    private static final String ID_REGEXP = "p-[0-9]{2,3}";
+    private static final String WEBSITE_REGEXP = "http(s)?://(www.)?([A-z0-9_-].?)+.([a-z]){2,4}/";
 
     private AttributeValidator() {}
 

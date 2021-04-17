@@ -12,11 +12,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Set;
 
 public class PublicationDOMParser extends PublicationParser {
-    private DocumentBuilder documentBuilder;
-    private PublicationFactory publicationFactory;
+    private final DocumentBuilder documentBuilder;
+    private final PublicationFactory publicationFactory;
     private PublicationWriter publicationWriter;
 
     public PublicationDOMParser() throws PublicationException {
@@ -29,10 +28,6 @@ public class PublicationDOMParser extends PublicationParser {
         } catch (ParserConfigurationException e) {
             throw new PublicationException("Can't create new DocumentBuilder", e);
         }
-    }
-
-    public PublicationDOMParser(Set<Publication> publicationSet) {
-        super(publicationSet);
     }
 
     @Override
@@ -51,15 +46,9 @@ public class PublicationDOMParser extends PublicationParser {
 
                 Node elementNode = publicationList.item(i);
                 switch (PublicationTypes.valueOf(elementNode.getNodeName().toUpperCase())) {
-                    case NEWSPAPER -> {
-                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
-                    }
-                    case MAGAZINE -> {
-                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
-                    }
-                    case BOOKLET -> {
-                        publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
-                    }
+                    case NEWSPAPER -> publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.NEWSPAPER);
+                    case MAGAZINE -> publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.MAGAZINE);
+                    case BOOKLET -> publicationWriter = publicationFactory.newPublicationBuilder(PublicationTypes.BOOKLET);
                 }
                 parsePublicationElement((Element) elementNode);
                 publicationSet.add(publicationWriter.buildPublication());

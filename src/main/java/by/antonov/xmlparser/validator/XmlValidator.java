@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 import by.antonov.xmlparser.handler.PaperErrorHandler;
 
 public class XmlValidator {
-    private static Logger Logger = LogManager.getLogger();
+    private static final Logger Logger = LogManager.getLogger();
     public static void xmlFileValidation(String xmlFilename, String schemaFilename) {
         Logger.info("XmlFileValidation for XML: " + xmlFilename + ", schema: " + schemaFilename);
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

@@ -1,6 +1,5 @@
 package by.antonov.xmlparser.parser;
 
-import by.antonov.xmlparser.entity.Publication;
 import by.antonov.xmlparser.exception.PublicationException;
 import by.antonov.xmlparser.handler.PublicationSaxHandler;
 import by.antonov.xmlparser.util.CustomResourceLoader;
@@ -12,11 +11,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
-import java.util.Set;
 
 public class PublicationSAXParser extends PublicationParser {
-    private PublicationSaxHandler publicationHandler = new PublicationSaxHandler();
-    private XMLReader reader;
+    private final PublicationSaxHandler publicationHandler = new PublicationSaxHandler();
+    private final XMLReader reader;
 
     public PublicationSAXParser() throws PublicationException {
         super();
@@ -30,10 +28,6 @@ public class PublicationSAXParser extends PublicationParser {
         }
         reader.setContentHandler(publicationHandler);
 
-    }
-
-    public PublicationSAXParser(Set<Publication> publicationList) {
-        super(publicationList);
     }
 
     @Override
