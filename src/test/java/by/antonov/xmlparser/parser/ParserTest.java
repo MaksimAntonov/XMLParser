@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ParserTest {
+    private final String PAPERS_XML_FILE = "data/papers_test.xml";
     private Set<Publication> expectedSet;
 
     @BeforeClass
@@ -49,31 +50,22 @@ public class ParserTest {
         };
     }
 
-    @Test
-    public void saxParserTest() throws PublicationException {
-        PublicationParser parser = PublicationParserFactory.createPublicationParser("sax");
-        parser.buildPublicationSet("data/papers_test.xml");
-        Set<Publication> actual = parser.getPublicationList();
-
-        Assert.assertEquals(actual, expectedSet);
+    @DataProvider (name = "parserDataTest")
+    public Object[][] parserDataTest() {
+        return new Object[][] {
+                {"sax", expectedSet},
+                {"dom", expectedSet},
+                {"stax", expectedSet}
+        };
     }
 
-    @Test
-    public void domParserTest() throws PublicationException {
-        PublicationParser parser = PublicationParserFactory.createPublicationParser("dom");
-        parser.buildPublicationSet("data/papers_test.xml");
+    @Test (dataProvider = "parserDataTest")
+    public void parserTest(String typeOfParser, Set<Publication> expected) throws PublicationException {
+        PublicationParser parser = PublicationParserFactory.createPublicationParser(typeOfParser);
+        parser.buildPublicationSet(PAPERS_XML_FILE);
         Set<Publication> actual = parser.getPublicationList();
 
-        Assert.assertEquals(actual, expectedSet);
-    }
-
-    @Test
-    public void staxParserTest() throws PublicationException {
-        PublicationParser parser = PublicationParserFactory.createPublicationParser("stax");
-        parser.buildPublicationSet("data/papers_test.xml");
-        Set<Publication> actual = parser.getPublicationList();
-
-        Assert.assertEquals(actual, expectedSet);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test (dataProvider = "parserFactoryClassDataTest")
