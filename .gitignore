@@ -9,3 +9,6 @@ target/
 
 # app
 logs/*
+
+#other
+*.zip
