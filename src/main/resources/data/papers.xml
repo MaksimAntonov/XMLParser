@@ -2,7 +2,7 @@
 <papers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://github.com/MaksimAntonov/XMLParser"
         xsi:schemaLocation="https://github.com/MaksimAntonov/XMLParser ./papers.xsd">
-    <newspaper paper-id="p-001">
+    <newspaper paper-id="p-01">
         <title>New York Time</title>
         <subscribe-date>2021-03-01</subscribe-date>
         <monthly>Yes</monthly>
@@ -10,7 +10,7 @@
         <pages>10</pages>
         <subscribe-index>1-4516-705</subscribe-index>
     </newspaper>
-    <magazine paper-id="p-12" publication-website="http://www.carsandtruck.pub/">
+    <magazine paper-id="p-02" publication-website="https://www.carsandtruck.pub/">
         <title>Cars and Trucks</title>
         <subscribe-date>2021-03-02</subscribe-date>
         <monthly>Yes</monthly>
@@ -19,7 +19,7 @@
         <pages-type>Paper</pages-type>
         <subscribe-index>1-151-779</subscribe-index>
     </magazine>
-    <booklet publication-website="http://www.safelife.org/" paper-id="p-03">
+    <booklet publication-website="https://www.safelife.org/" paper-id="p-03">
         <title>Safe Life</title>
         <subscribe-date>2021-03-02</subscribe-date>
         <monthly>No</monthly>
@@ -27,4 +27,113 @@
         <pages>5</pages>
         <pages-type>Glossy</pages-type>
     </booklet>
+    <newspaper paper-id="p-04">
+        <title>Daily</title>
+        <subscribe-date>2021-02-01</subscribe-date>
+        <monthly>No</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <subscribe-index>1-4116-705</subscribe-index>
+    </newspaper>
+    <magazine paper-id="p-05" publication-website="https://www.das-auto.pub/">
+        <title>Das auto</title>
+        <subscribe-date>2021-03-20</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>15</pages>
+        <pages-type>Paper</pages-type>
+        <subscribe-index>1-152-779</subscribe-index>
+    </magazine>
+    <booklet publication-website="https://www.belavia.by/" paper-id="p-06">
+        <title>Belavia tour</title>
+        <subscribe-date>2021-12-02</subscribe-date>
+        <monthly>No</monthly>
+        <colored>Yes</colored>
+        <pages>2</pages>
+        <pages-type>Glossy</pages-type>
+    </booklet>
+    <newspaper paper-id="p-07" publication-website="https://kp.by/">
+        <title>Комсомольская правда</title>
+        <subscribe-date>2020-03-01</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <subscribe-index>1-516-705</subscribe-index>
+    </newspaper>
+    <magazine paper-id="p-08" publication-website="https://autoreview.ru/">
+        <title>Авторевю</title>
+        <subscribe-date>2021-01-02</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>15</pages>
+        <pages-type>Paper</pages-type>
+        <subscribe-index>1-251-779</subscribe-index>
+    </magazine>
+    <booklet publication-website="https://npbp.by/" paper-id="p-09">
+        <title>Национальный парк "Беловежская пуща"</title>
+        <subscribe-date>2019-03-02</subscribe-date>
+        <monthly>No</monthly>
+        <colored>Yes</colored>
+        <pages>2</pages>
+        <pages-type>Glossy</pages-type>
+    </booklet>
+
+    <newspaper paper-id="p-10" publication-website="https://sb.by/">
+        <title>Беларусь Сегодня</title>
+        <subscribe-date>2020-03-18</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>Yes</colored>
+        <pages>10</pages>
+        <subscribe-index>1-516-774</subscribe-index>
+    </newspaper>
+    <magazine paper-id="p-11" publication-website="https://www.forbes.com/">
+        <title>Forbes</title>
+        <subscribe-date>2021-01-01</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <pages-type>Glossy</pages-type>
+        <subscribe-index>1-351-779</subscribe-index>
+    </magazine>
+    <booklet publication-website="https://stalin-line.by/" paper-id="p-12">
+        <title>Историко-культурный комплекс "Линия Сталина"</title>
+        <subscribe-date>2019-03-12</subscribe-date>
+        <monthly>No</monthly>
+        <colored>Yes</colored>
+        <pages>5</pages>
+        <pages-type>Glossy</pages-type>
+    </booklet>
+    <newspaper paper-id="p-13" publication-website="https://neg.by/">
+        <title>Экономическая газета</title>
+        <subscribe-date>2020-03-01</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <subscribe-index>1-516-705</subscribe-index>
+    </newspaper>
+    <magazine paper-id="p-14" publication-website="https://www.fortune.com/">
+        <title>Fortune</title>
+        <subscribe-date>2021-01-02</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>15</pages>
+        <pages-type>Paper</pages-type>
+        <subscribe-index>1-251-779</subscribe-index>
+    </magazine>
+    <booklet publication-website="https://baikalzapovednik.ru/" paper-id="p-15">
+        <title>Байкальский заповедник</title>
+        <subscribe-date>2020-12-12</subscribe-date>
+        <monthly>No</monthly>
+        <colored>Yes</colored>
+        <pages>2</pages>
+        <pages-type>Glossy</pages-type>
+    </booklet>
+    <newspaper paper-id="p-16" publication-website="https://transport-gazeta.by/">
+        <title>Транспортный вестник</title>
+        <subscribe-date>2020-03-01</subscribe-date>
+        <monthly>Yes</monthly>
+        <colored>No</colored>
+        <pages>10</pages>
+        <subscribe-index>1-516-507</subscribe-index>
+    </newspaper>
 </papers>
